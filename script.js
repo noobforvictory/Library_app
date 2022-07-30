@@ -30,7 +30,16 @@ function changeStatus(b){
     b.status = read;
    }
 }
- 
+function getValue(){
+   let author = document.getElementById('author').value;
+    let title = document.getElementById('title').value;
+    let totalPages = document.getElementById('totalPages').value;
+    let pagesRead = document.getElementById('pagesRead').value;
+    let value = document.getElementById('status');
+    let status = value.options[value.selectedIndex].text;
+    console.log(status);    
+    
+}
 
 document.querySelector('.button').addEventListener('click',
 function(){
