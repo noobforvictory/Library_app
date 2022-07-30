@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,18 +13,62 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="container">
       <div class="header"></div>
       <div class="sidebar">
-        <h1>My Library</h1>
-        <div class="icon">
-          <span class="material-symbols-rounded"> add_box </span>
+        <h1>Library</h1>
+        <div>
+          <h3>Library log</h3>
+
+          <div>
+            <div>Total Books</div>
+            <div>0</div>
+          </div>
+          <div>
+            <div>Books read</div>
+            <div>0</div>
+          </div>
+          <div>
+            <div>Unread Books</div>
+            <div>0</div>
+          </div>
         </div>
+        <button class="button">+ Add Book</button>
       </div>
       <div class="main"></div>
+      <div class="popUpBack">
+        <div class="popUp">
+          <div class="cancel">+</div>
+          <form action="" method="">
+            <input type="text" id="author" name="author" placeholder="Author" />
+
+            <input type="text" id="title" name="title" placeholder="Title" />
+
+            <input
+              type="number"
+              id="totalPages"
+              name="totalPages"
+              placeholder="Total Pages"
+            />
+
+            <input
+              type="number"
+              id="pagesRead"
+              name="pagesRead"
+              placeholder="Pages read"
+            />
+
+            <select id="status">
+              <option value="read">Read</option>
+              <option value="unread" selected>Unread</option>
+            </select>
+            <button class="btn" type="submit">Add</button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>

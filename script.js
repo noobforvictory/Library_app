@@ -1,10 +1,11 @@
 let myLibrary = [];
 
 
-function Book(author,title,pages,status){
+function Book(author,title,totalPages,pagesRead,status){
 this.author = author,
 this.title = title,
-this.pages = pages,
+this.totalPages = totalPages,
+this.pagesRead = pagesRead,
 this.status = status
 }
 
@@ -29,11 +30,14 @@ function changeStatus(b){
     b.status = read;
    }
 }
+ 
 
-myLibrary.prototype = new displayBooks();
+document.querySelector('.button').addEventListener('click',
+function(){
+    document.querySelector('.popUpBack').style.display = 'flex';
+});
+document.querySelector('.cancel').addEventListener('click',
+function(){
+    document.querySelector('.popUpBack').style.display = 'none';
+});
 
-let b1 = new Book('tolkin','hobbit',234,'read');
-let b2 = new Book('tolkin','hobbit',234,'read');
-addBookToLibrary(b1);
-addBookToLibrary(b2);
-displayBooks();
