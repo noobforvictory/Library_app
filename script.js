@@ -95,9 +95,8 @@ function getValue(){
     let value = document.getElementById('status');
     let status = value.options[value.selectedIndex].text;
     const b = new Book(author,title,totalPages,status);
+    if(author !== '' && title !== '' && totalPages !== '' ){
     myLibrary.push(b);
-    
-    if(author !== ''){
     b.displayBook();
     } 
 }
