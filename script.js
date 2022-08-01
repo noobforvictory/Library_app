@@ -1,9 +1,6 @@
 var main = document.querySelector('.main');
 let myLibrary = [];
-var i =0;
 
-var read = 0 ;
-var unRead = 0;
 
 function Book(author,title,totalPages,status){
 this.author = author,
@@ -12,6 +9,14 @@ this.totalPages = totalPages,
 this.status = status
 }
 function displayLog(){
+   let read =  myLibrary.reduce((total,each)=>{
+      if(each.status === 'Read')total++;
+      return total;
+   },0);
+   let unRead =  myLibrary.reduce((total,each)=>{
+    if(each.status === 'Unread')total++;
+    return total;
+ },0);
     document.querySelector('.displayTotal').innerHTML = myLibrary.length;
     document.querySelector('.displayRead').innerHTML = read;
     document.querySelector('.displayUnRead').innerHTML = unRead;
@@ -24,8 +29,9 @@ function displayLog(){
 
       const book = document.createElement('div');
       book.classList.add('book');
-      book.setAttribute('id',i);
-      i++;
+      book.setAttribute('id',this.author);
+      
+     
       
       main.appendChild(book);
       const author = document.createElement('div');
@@ -42,11 +48,11 @@ function displayLog(){
        removeButton.classList.add('removeButton');
        
        if(this.status === 'Read'){
-        read++;
+        
         status.classList.add('Read');
         status.textContent = 'Read';
       }else{
-        unRead++;
+       
         status.classList.add('Unread');
         status.textContent = 'Unread';
       }
@@ -63,10 +69,16 @@ function displayLog(){
 function cancel(){
     document.querySelector('.popUpBack').style.display = 'none';
 };
+function getIndex(name){
+  return  myLibrary.findIndex(element=>element.author === name);
+}
 
-function removeBook(num){
-    myLibrary.splice(num,1);
-    i--;
+function removeBook(name){
+    const index = getIndex(name);
+    
+    myLibrary.splice(index,1);
+    document.getElementById(name).remove();
+    displayLog();
 }
 
 function changeStatus(b){
@@ -99,58 +111,46 @@ document.querySelector('.cancel').addEventListener('click', cancel);
 document.querySelector('.btn').addEventListener('click',getValue);
 
 
-document.addEventListener('click',
-function(e){
-    
-    if(e.target.matches('button.btn')){
-        document.querySelectorAll('.Read').forEach(element =>element.addEventListener('click',
-        function(e){
-    
-        let num =  e.target.parentElement.id;
-    
-    myLibrary[num].status = 'Unread';
-    e.target.classList.remove('Read');
-    e.target.classList.add('Unread');
-    e.target.textContent = myLibrary[num].status;
-    read--;
-    unRead++;
-    displayLog();
-    },{once:true}));
-}
-    if(e.target.matches('button.btn')){
-        document.querySelectorAll('.Unread').forEach(element =>element.addEventListener('click',
-        function(e){
-    
-        let num =  e.target.parentElement.id;
+
+        document.addEventListener('click',
+    function(e){
         
-           myLibrary[num].status = 'Read';
-           e.target.classList.remove('Unread');
-           e.target.classList.add('Read');
-           e.target.textContent = myLibrary[num].status;
-           read++;
-           unRead--;
-           displayLog();
-        },{once:true}));
+        if(document.querySelectorAll('.Read')){
+            document.querySelectorAll('.Read').forEach(element =>element.addEventListener('click',
+        function(){
+            let name =  element.parentElement.id;
+        let index = getIndex(name);
+        myLibrary[index].status = 'Unread';
+        element.classList.remove('Read');
+        element.classList.add('Unread');
+        element.textContent = myLibrary[index].status;
+        
+        displayLog();
+    },{once:true}));
     }
-    });
-
-
-
-
-
+        if(document.querySelectorAll('.Unread')){
+            document.querySelectorAll('.Unread').forEach(element =>element.addEventListener('click',
+            function(){
+        
+            let name =  element.parentElement.id;
+            let index = getIndex(name);
+            
+               myLibrary[index].status = 'Read';
+               element.classList.remove('Unread');
+               element.classList.add('Read');
+               element.textContent = myLibrary[index].status;
+               
+               displayLog();
+            },{once:true}));
+        }
+        if(document.querySelectorAll('.removeButton')){
+            document.querySelectorAll('.removeButton').forEach(element=>element.addEventListener('click',function(){
+                let name =  element.parentElement.id;
+                removeBook(name);  
+                
+            },{once:true}));
+            
+        }
+        });
     
-   
-
-
-
-
-// function(){
-//     let num =  element.parentElement.id;
-//  console.log(e);
-//     myLibrary[num].status = 'Unread';
-//     element.classList.remove('Read');
-//     element.classList.add('Unread');
-//     element.textContent = myLibrary[num].status;
-//     read--;
-//     unRead++;
-//     displayLog();
+    
