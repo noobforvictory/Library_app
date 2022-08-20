@@ -1,5 +1,3 @@
-console.log("experiment");
-
 var main = document.querySelector(".main");
 let myLibrary = [];
 
