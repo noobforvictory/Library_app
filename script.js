@@ -148,8 +148,6 @@ document.addEventListener("click", function (e) {
     );
   }
 });
-<<<<<<< HEAD
-=======
 
 document.querySelector(".btn").addEventListener("click", () => {
   let author = document.querySelector("#author");
@@ -186,4 +184,3 @@ pages.addEventListener("input", () => {
     pages.setCustomValidity("");
   }
 });
->>>>>>> temp
