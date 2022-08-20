@@ -148,3 +148,42 @@ document.addEventListener("click", function (e) {
     );
   }
 });
+<<<<<<< HEAD
+=======
+
+document.querySelector(".btn").addEventListener("click", () => {
+  let author = document.querySelector("#author");
+
+  if (author.value === "") {
+    author.setCustomValidity("enter text ");
+    author.reportValidity();
+  } else {
+    author.setCustomValidity("");
+  }
+  let title = document.querySelector("#title");
+  if (title.value === "") {
+    title.setCustomValidity("enter text ");
+    title.reportValidity();
+  } else {
+    title.setCustomValidity("");
+  }
+  let pages = document.querySelector("#totalPages");
+  if (pages.value === "") {
+    pages.setCustomValidity("enter total pages ");
+    pages.reportValidity();
+  } else {
+    pages.setCustomValidity("");
+  }
+});
+
+let pages = document.querySelector("#totalPages");
+pages.addEventListener("input", () => {
+  pages.setCustomValidity("");
+  if (!pages.validity.valid) {
+    pages.setCustomValidity("please enter only numbers");
+    pages.reportValidity();
+  } else {
+    pages.setCustomValidity("");
+  }
+});
+>>>>>>> temp

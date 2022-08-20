@@ -1,4 +1,9 @@
 {
+<<<<<<< HEAD
   "eslint.debug": false,
+=======
+  "prettier.jsxSingleQuote": true,
+  "eslint.alwaysShowStatus": false,
+>>>>>>> temp
   "eslint.format.enable": true
 }
